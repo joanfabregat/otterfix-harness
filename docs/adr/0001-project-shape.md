@@ -12,6 +12,8 @@ Security remediation needs dependency analysis, code changes, and independently 
 
 Build an open source Rust CLI and library that receive a prepared workspace, versioned findings, trusted policy, validation requirements, execution capabilities, and budgets. The harness mediates model tools, applies candidate changes, performs bounded repair, requests independent validation, and returns a digest-bound patch and structured evidence. Standalone use requires no commercial account or GitHub credentials.
 
+License the CLI, library, and public contracts uniformly under Apache-2.0. Keep one permissive license across these interfaces so callers can embed or distribute the harness without a separate licensing boundary between contracts and execution code.
+
 | Component | Responsibility |
 | --- | --- |
 | Harness | Finding ingestion, context/model loop, tool policy, bounded candidate changes and repair, validation results |
