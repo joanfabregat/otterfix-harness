@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 rust-version = "1.85"
 description = "Portable finding triage and bounded remediation contracts"
-repository = "https://github.com/joanfabregat/otterfix"
+repository = "https://github.com/joanfabregat/otterfix-harness"
 publish = false
 
 [dependencies]
