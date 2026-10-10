@@ -59,6 +59,7 @@ fn protected_by_default(path: &str) -> bool {
                 | ".codex"
                 | ".claude"
                 | "tests"
+                | "fixtures"
                 | "snapshots"
                 | "__snapshots__"
                 | "AGENTS.md"

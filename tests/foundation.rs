@@ -184,6 +184,7 @@ fn protected_paths_traversal_and_renames_fail() {
         "src//foo",
         "src/./foo",
         "src/.env",
+        "src/fixtures/data.json",
         "src/.codex/settings",
     ] {
         assert!(
