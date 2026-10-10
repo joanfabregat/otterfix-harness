@@ -1,0 +1,27 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Check documentation and public boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff-tree --check --root -r HEAD
+          test -s README.md
+          test -s docs/adr/README.md
+          ! git grep -n -E '^(<<<<<<< |=======|>>>>>>> )' -- '*.md'
+          ! git grep -n -E '(/home/joan|ffwip\.com|ffinfra\.com|joanfabregat/otterfix-platform|otterfix-dev-evidence)' -- '*.md' '*.rs' '*.json'
