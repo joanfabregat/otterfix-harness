@@ -1,0 +1,32 @@
+name: Rust
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: rust-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    name: Format, lint, test, and audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install stable Rust components
+        run: rustup toolchain install stable --profile minimal --component rustfmt --component clippy
+      - name: Install pinned RustSec audit tool
+        run: cargo +stable install cargo-audit --version 0.22.2 --locked
+      - name: Audit locked dependencies before compilation
+        run: cargo +stable audit --deny warnings
+      - name: Fetch locked dependencies
+        run: cargo +stable fetch --locked
+      - name: Check formatting
+        run: cargo +stable fmt --all -- --check
+      - name: Check lints offline
+        run: cargo +stable clippy --offline --locked --all-targets -- -D warnings
+      - name: Test offline
+        run: cargo +stable test --offline --locked --all-targets
