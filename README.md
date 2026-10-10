@@ -1,5 +1,11 @@
 # Otterfix Harness
 
+<p align="center">
+  <img src="docs/brand/otterfix-logo.svg" alt="Otterfix" width="280">
+</p>
+
+The Harness software is licensed under [Apache-2.0](LICENSE). The Otterfix name and logo are reserved branding of Joan Fabregat and are excluded from that license; see [trademark notice](TRADEMARKS.md) and [branding terms](docs/brand/LICENSE.md).
+
 Otterfix Harness is an open source Rust remediation engine: consume normalized security findings, run a bounded API-based agent, and independently validate dependency, code, or configured workload changes.
 
 The core is independent of Git hosting and execution location. GitHub is the first integration target. Callers own acquisition, lifecycle orchestration, publication, and delivery; repository CI/CD retains authoritative checks and deployment approval. Standalone execution requires no commercial service.
