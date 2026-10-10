@@ -24,4 +24,4 @@ jobs:
           test -s README.md
           test -s docs/adr/README.md
           ! git grep -n -E '^(<<<<<<< |=======|>>>>>>> )' -- '*.md'
-          ! git grep -n -E '(/home/joan|ffwip\.com|ffinfra\.com|joanfabregat/otterfix-platform|otterfix-dev-evidence)' -- '*.md' '*.rs' '*.json'
+          ! git grep -n -E '(/home/[^/]+/|/Users/[^/]+/|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY)' -- '*.md' '*.rs' '*.json'
